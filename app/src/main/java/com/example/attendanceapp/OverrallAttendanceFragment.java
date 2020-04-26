@@ -22,6 +22,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.Map;
+
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
 
@@ -46,6 +48,7 @@ public class OverrallAttendanceFragment extends Fragment {
     public OverrallAttendanceFragment(Context applicationContext, ViewPager viewPager, String BNo) {
         // Required empty public constructor
         StudentNo = BNo;
+
     }
 
 
@@ -75,8 +78,8 @@ public class OverrallAttendanceFragment extends Fragment {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         Log.d(TAG, document.getId() + " => " + document.getData());
                         NumOfDocs++;
-                        String doc = document.getId();
-                        if(doc.equals(StudentNo)) { //Null pointer error
+                        Map<String,Object> data= document.getData();
+                        if(data.containsKey(StudentNo)) { //Null pointer error
                             Count++;
                         }
                     }

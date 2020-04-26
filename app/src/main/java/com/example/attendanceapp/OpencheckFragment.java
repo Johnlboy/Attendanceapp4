@@ -78,10 +78,11 @@ public class OpencheckFragment extends Fragment {
         String docName = CourseCode + "_" + CourseTitle + "_" + Date;
         //Adding data to map
         Map<String, Object> Data = new HashMap<>();
-        Data.put("StudentNo.", "Admin123");
         Data.put("DateAdded", new Timestamp(new Date()));
+        Map<String, Object> data = new HashMap<>();
+        data.put("Admin", Data);
         //Adding map to the database
-        Attendance.collection("Attendance").document(docName).set(Data).addOnSuccessListener(new OnSuccessListener<Void>() {
+        Attendance.collection("Attendance").document(CourseCode).collection(CourseTitle).document(Date).set(data).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 popToast(context, "Data added successfully");

@@ -25,7 +25,7 @@ public class StudentMenuActivity extends AppCompatActivity {
         // create view pager adapter
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         OverrallAttendanceFragment TotalAtten = new OverrallAttendanceFragment(getApplicationContext(),viewPager, Bno);
-        CheckIn checkIn = new CheckIn(getApplicationContext(),viewPager, email);
+        CheckIn checkIn = new CheckIn(getApplicationContext(),viewPager, email,Bno);
 
         viewPagerAdapter.addFragments(checkIn, "Check in");
         viewPagerAdapter.addFragments(TotalAtten, "OverallAttendance");
